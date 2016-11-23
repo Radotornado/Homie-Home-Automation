@@ -9,7 +9,7 @@ val = 0
 while 1 :
     val = ser.read()
     print val
-    if val == 'g':
+    if val == '1':
         GPIO.output(8,True)
     else :
         GPIO.output(8,False)

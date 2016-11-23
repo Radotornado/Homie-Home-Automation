@@ -6,10 +6,10 @@ void loop() {
   sersorValue = analogRead(A0);
   if(sersorValue >= 150)
   {
-    Serial.print('g');
+    Serial.print('1');
   }
   else 
   {
-    Serial.print('s');
+    Serial.print('0');
   }
 }
