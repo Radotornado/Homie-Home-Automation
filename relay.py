@@ -1,16 +1,28 @@
 import RPi.GPIO as GPIO
 import urllib2
 import time
+import subprocess
+import smtplib
+import socket
+from email.mime.text import MIMEText
+import datetime
+to = 'radoslav.mandev99@gmail.com'
+gmail_user = '-'
+gmail_password = '-'
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
+ser = serial.Serial('/dev/ttyACM0', 9600)
 GPIO.setup(23,GPIO.OUT)
 GPIO.setup(14,GPIO.OUT)
 GPIO.setup(15,GPIO.OUT)
 GPIO.setup(18,GPIO.OUT)
 GPIO.setup(24,GPIO.OUT)
 GPIO.setup(25,GPIO.OUT)
+GPIO.setup(8,GPIO.OUT)
 true = 1
+val = 0
 while(true):
+				val = ser.read()
                 try:
                         response = urllib2.urlopen('http://192.168.0.102/xampp/buttonStatus.txt')
                         status = response.read()
@@ -21,7 +33,30 @@ while(true):
                                         print e.args
 
                 print status
-                if status=='Laundry_ON':
+				print val
+				if val == '1':
+								GPIO.output(8,True)
+								
+								smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
+								smtpserver.ehlo()
+								smtpserver.starttls()
+								smtpserver.ehlo
+								smtpserver.login(gmail_user, gmail_password)
+								today = datetime.date.today()
+								arg='ip route list'
+								p=subprocess.Popen(arg,shell=True,stdout=subprocess.PIPE)
+								data = p.communicate()
+								split_data = data[0].split()
+								msg = MIMEText('The gas sensor in HOMIE found a gas leak and shut it off!')
+								msg['Subject'] = 'There is a gas leak in your house!'
+								msg['From'] = gmail_user
+								msg['To'] = to
+								smtpserver.sendmail(gmail_user, [to], msg.as_string())
+								smtpserver.quit()
+								
+				elif val == '0':
+								GPIO.output(8,False)
+                elif status=='Laundry_ON':
                                 GPIO.output(14,True)
                 elif status=='Laundry_OFF':
                                 GPIO.output(14,False)
