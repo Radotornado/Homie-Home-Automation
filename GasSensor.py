@@ -5,13 +5,23 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(8,GPIO.OUT)
 ser = serial.Serial('/dev/ttyACM0', 9600)
-val = 0
-while 1 :
-    val = ser.read()
-    print val
-    if val == '1':
+true = 1
+s = [0]
+import subprocess
+import smtplib
+import socket
+from email.mime.text import MIMEText
+import datetime
+to = 'radoslav.mandev99@gmail.com'
+gmail_user = 'homie.raspi@gmail.com'
+gmail_password = 'rpipasswordRM'
+while (true) :
+    read_serial=ser.readline()
+    s[0]=str(int (ser.readline(),16))
+    print s[0]
+    if s[0] == '1':
         GPIO.output(8,True)
-    else :
+    elif s[0] == '0':
         GPIO.output(8,False)
     time.sleep(1)
     

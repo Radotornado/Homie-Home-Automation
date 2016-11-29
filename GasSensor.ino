@@ -1,21 +1,23 @@
-// A program to send data to Raspberry PI using serial
+char dataString[50] = {0};
+int a =0; 
 void setup() {
-  Serial.begin(9600); // Start the serial monitor
+Serial.begin(9600);              //Starting serial communication
 }
-
-//Loop
+  
 void loop() {
-  // Assigning a variable that contains the data from the gas sensor
-  int sersorValue;
-  // Reads the data through analog pin
-  sersorValue = analogRead(A0);
-  // Checks the value if its higher than a certain level and sends them to the RPI
-  if(sersorValue >= 150)
+  int sensorValue;
+  sensorValue = analogRead(A0);
+  if(sensorValue >= 150)
   {
-    Serial.print('1');
+    a=1;
+    sprintf(dataString,"%02X",a); // convert a value to hexa 
+  Serial.println(dataString); 
   }
   else 
   {
-    Serial.print('0');
-  }
+    a=0;
+  Serial.println(dataString); 
+   sprintf(dataString,"%02X",a); // convert a value to hexa 
+  } 
+  delay(100);                  // give the loop some break
 }
