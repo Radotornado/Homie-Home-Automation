@@ -13,8 +13,8 @@ import socket
 from email.mime.text import MIMEText
 import datetime
 to = 'radoslav.mandev99@gmail.com'
-gmail_user = 'homie.raspi@gmail.com'
-gmail_password = 'rpipasswordRM'
+gmail_user = '-'
+gmail_password = '-'
 while (true) :
     read_serial=ser.readline()
     s[0]=str(int (ser.readline(),16))
