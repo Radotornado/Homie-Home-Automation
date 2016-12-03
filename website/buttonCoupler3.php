@@ -77,7 +77,7 @@ form button:hover {
 			<br><br>
 			<input type = 'submit' class = 'buttonOff' name ='c3_OFF' id='c3_OFF' value = 'Coupler socket 3 OFF'>
 			<br><br><br>
-			<input type = 'submit' formaction = 'index.html' value = 'Home'>
+			<input type = 'submit' formaction = 'main.php' value = 'Home'>
 		</form>
 	</div>
 	
@@ -178,7 +178,7 @@ form button:hover {
 			<br><br>
 			<input type = 'submit' class = 'buttonOff' name ='c3_OFF' id='c3_OFF' value = 'Coupler socket 3 OFF'>
 			<br><br><br>
-			<input type = 'submit' formaction = 'index.html' value = 'Home'>
+			<input type = 'submit' formaction = 'main.php' value = 'Home'>
 		</form>
 	</div>
 	

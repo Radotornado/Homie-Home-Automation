@@ -1,3 +1,12 @@
+<?php
+session_start();                  // Старт на сесия
+if (!isset($_SESSION)) { //Проверка дали съществува сесия
+    header("location:index.php");
+    exit;
+} else {
+    header('Content-Type: text/html; charset=utf-8');
+}
+?>
 <!DOCTYPE html>
 <html >
 <head>
@@ -14,6 +23,7 @@
 		<h2><strong>HOMIE</strong> Home Automation</h2>
 		<h2>control panel</h2>
 		<form class="form">
+		<br><br><br>
 			<button type="submit" formaction="laundry.html" id="linkButton">Laundry</button>
 			<br><br>
 			<button type="submit" formaction="boiler.html" id="linkButton">Boiler</button>
@@ -23,6 +33,8 @@
 			<button type="submit" formaction="coupler.html" id="linkButton">Elecrical coupler</button>
 			<br><br>
 			<button type="submit" formaction="about.html" id="linkButton">About</button>
+			<br><br>
+			<button type="submit" formaction="logout.php" id="linkButton">Logout</button>
 		</form>
 	</div>
 	
