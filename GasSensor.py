@@ -1,3 +1,5 @@
+# Work in progress
+# Part of relay.py
 import serial
 import time
 import RPi.GPIO as GPIO

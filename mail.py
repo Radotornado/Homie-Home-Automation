@@ -1,3 +1,5 @@
+# Work in progress
+# Part of relay.py
 import subprocess
 import smtplib
 import socket
